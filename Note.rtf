@@ -1,8 +1,14 @@
 {\rtf1\ansi\ansicpg1252\cocoartf2580
-\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
-{\colortbl;\red255\green255\blue255;}
-{\*\expandedcolortbl;;}
-\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fswiss\fcharset0 Helvetica-Bold;\f2\fnil\fcharset0 HelveticaNeue;
+\f3\fnil\fcharset0 HelveticaNeue-BoldItalic;\f4\fnil\fcharset0 HelveticaNeue-Italic;\f5\fnil\fcharset0 Monaco;
+\f6\fnil\fcharset0 HelveticaNeue-Bold;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red212\green212\blue212;\red222\green43\blue91;
+\red30\green30\blue31;\red22\green74\blue153;\red80\green81\blue83;\red245\green245\blue246;\red30\green30\blue31;
+\red30\green30\blue31;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\cssrgb\c86370\c86370\c86262;\cssrgb\c90558\c26991\c42976;
+\cssrgb\c15686\c15686\c16078;\cssrgb\c9804\c37255\c66667;\cssrgb\c38824\c39216\c40000;\cssrgb\c96863\c96863\c97255;\cssrgb\c15705\c15706\c16078;
+\cssrgb\c15725\c15725\c16078;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww16980\viewh8400\viewkind0
 \pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
 
 \f0\fs24 \cf0 Set Up the Skeleton Project\
@@ -12,5 +18,222 @@
 Next Step, if you want to add an IBAction, simple press control key and drag the button on the screen to the viewController code, give it a type of Action and UiAction button, then give it a name\
 \
 If you want to link this function to multiple button, just drag and link it to the button name on the screen\
+\
+Next up of the video ask us to declare a constant variable where you let softTime = 5 , let mediumTime = 7 and let hardTime = 12,\
+ Then in the IBAction function, you need to declare one variable call hardness, eg let hardness = sender.currentTitle, in which it will show a warning called initialisation of immutable value was never used, consider using a \'93_\'94 instead\
+\
+What this warning means is that is you are not going to use this constant anywhere in anyplace  of your code, you should simple just replace the variable declaration by using \'93_\'94 underscore\
+But we are going to use the variable so we can just ignore the warning right now\
+\
+So now our challenge is how do we print softTime when the user choose soft, print mediumTime when the user choose medium and how do we print hard when the user choose hard?\
+\
+Solution: we can actually tap into the properties of the sender button, by using, sender.currentTitle,\
+Where it is done by let hardness = sender.currentTitle\
+\
+Now this hardness will be soft, medium or hard\
+\
+So we can check the string of the hardness, check whether it is equal to the string we wanted by using the equal sign, if(hardness == \'93soft\'94)\
+Or we can use a switch case \
+\
+
+\f1\b \
+\ul Swift Deep Dive (If -else statement)\
+
+\f0\b0 \ulnone If, else if (not elif) , final is else\
+\
+Conditional check function such as ==, !=, >=, <= which I already learnt\
+In swift, the and operators is && and or operators is |\
+\
+I should go and learn the syntax for swift soon by using geekforgeeks\
+And go and learn some concept behind swift\
+\
+Example :\
+               Func loveCalculator()\{\
+                   Let loveScore = Int.random(in: 0 \'85 30)\
+                   // in swift if else statement, we actually do not need a bracket like JAVA did\
+                   // one \'93=\'93 sign is for assignment to a variable and \'93==\'93 or \'93===\'93 is for conditional checking\
+                   /* \cf2 \expnd0\expndtw0\kerning0
+Swift gives us two equality operators, == and ===, that do slightly different things. You will almost certainly need to use both of them so it\'92s worth\
+                      taking the time to learn them.\
+\pard\pardeftab720\partightenfactor0
+\cf2                       First, == is the equality operator, which tests that two things are equal for whatever definition of \'93equal\'94 those things use. For example, 5 == 5 is \
+                      true because there == means an integer comparison, and the same is true for other built-in value types such as strings, booleans, and doubles.\
+                      Things get more complicated when == is used with a struct you built, because by default they cannot be compared \'96\'a0you need to make them \
+                      conform to the Equatable protocol.\
+                      In comparison, === is the identity operator, which checks whether two instances of a class point to the same memory. This is different from \
+                      equality, because two objects that were created independently using the same values will be considered equal using == but not === because they\
+                      are different objects.\
+                     The === operator is available only when using classes because structs are designed so they are always uniquely referenced. */\kerning1\expnd0\expndtw0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0                    If loveScore == 100 \{\
+                   	print(\'93You love something\'94)\
+                   \}\
+                   Else\{\
+                         //do something else\
+                   \}\
+               \}\
+\
+\
+
+\f1\b \ul Swift Deep Dive 2 (Switch Statement)\
+
+\f0\b0 \ulnone Now this is a similar to what a if else function are, the general format of the function is below \
+\
+Switch hardness \{\
+	case \'93Soft\'94:\
+		print(5)\
+	case \'93Medium\'94\
+		print(7)\
+	case \'93Hard\'94\
+		print(12)\
+	default:\
+		print(\'93Error\'94)\
+\}\ul \
+\
+\
+\ulnone Where hardness is the variables we take in, this var should match the datatype in the case statement\
+\
+Next, what if we want to check whether the variables lies in a range of number or some range instead of just a string or just a constant?\
+\
+We can use a range operator like what we did in random ( eg, Int.random(in: 1 \'85 100))\
+A \'85 b is (inclusive of a and b)\
+A ..< b is where inclusive of A but not include B\
+\'85 b     is what is a one side range where up to and including b where anything less than b is acceptable\
+\
+(Google range operator in swift)\
+\
+Hence the sample solution for the loveCalculator by using the switch statement is \
+\
+Func loveCalculator()\{\
+	let loveScore = Int.random(in: 0\'85100)\
+	\
+	switch loveScore \{\
+		case 81\'85100:\
+			print(\'93This is good\'94)\
+		case 41 ..< 81:\
+  			print(\'93This is okay\'94)\
+		case \'8540:\
+			print(\'93this is bad\'94)\
+		default:\
+			print(\'93Error\'94)\
+	\}\
+\}\
+\
+For the hardness selector function for the eggTimer App, we can use (if-else statement or switch cases)\
+\
+Let softTime = 5;\
+Let mediumTime = 8;\
+Let hardTime = 10;\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 Func hardnessSelected()\{\
+	let hardness = sender.currentTitle\
+	\
+	switch hardness \{\
+		case \'93Soft\'94:\
+			print(softTime)\
+		case \'93Medium\'94:\
+			print(mediumTime)\
+		case \'93Hard\'94:\
+			print(hardTime)\
+		default:\
+			print(\'93Error\'94)\
+	\}\
+\}\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 \
+**Important takeaways, remember how to use a switch statements in Swift, and how to use if else statement in swift\
+\
+Next, instead of using three different variables/ constant, we can actually store all the variables inside dictionaries (which is equivalent to dict in python and hash map in JAVA)\
+\
+\
+
+\f1\b \ul Dictionaries\
+
+\f0\b0 \ulnone Key values pairs\
+\
+For example , let eggTimes = [ \'93Soft\'94 : 5, \'93Medium\'94 :7, \'93Hard\'94 : 12]\
+\
+You can have dictionaries where key and value have different data types, your key can be any data type and your value also can be different data types\
+\ul Creating a dictionaries\
+\ulnone Var dict : [String : Int] = [ \'93Angela\'94 : 13341341, \'93Philipp\'94 : 31141434]. //are we suppose to statically give the dict a data type first before we proceed or we just let the compiler decide which data type it is?\
+//I think is better to define the constant data type before we proceed\
+\ul \
+Accessing a dictionaries\
+\ulnone Same as what you do as array, we just do dict[\'93Angela\'94], then we will get the value for this key\
+\
+\ul Appending a new key and value pairs to dictionaries\
+\ulnone If you want to append a new key and value pairs to a dictionaries, we can use \
+	dict[\'93newKey\'94] = 12345678\
+\
+\ul Update a key value pair that already exist in a dictionaries\
+\ulnone If you want to update a key value pairs which is already inside a dictionaries, you can use the same method as in the append a new value method\
+	dict[\'93alreadyExistKey\'94] = 78647697\
+This will update the already existed value associated to the key\
+\
+\
+\
+
+\f1\b \ul Swift dive Deep part 3 (Optional) what is \'93!\'94 \'93?\'94\
+
+\f0\b0 \ulnone Background, for a variable we created we usually assumed it to have a value, for example, for a var myAge: Int = 5\
+We usually expect it will have a value already, but what if the var myAge we do not give it a value, instead, we give it a nil? ( In Swift we use nil instead of null)\
+	For example: var player1Username : String = nil (this will give an error and our program will crash) because we cannot assign a nil value to String variable\
+\
+Now how to overcome this problem, that\'92s is the reason we will have an optional in Swift. Different from JAVA, in java we do not have this, the compiler will simply assign a null value to String if we don\'92t assign a value to the String variable\
+\
+\ul In JAVA for uninitialised variables,\ulnone \
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs30 \cf5 \expnd0\expndtw0\kerning0
+It will depend on two things:\
+1. Variable Type - If it is declared as int, byte or short\
+2. Class vs. Method Variables - A variable declared within a method is not initialized.\
+From the official documentation {\field{\*\fldinst{HYPERLINK "https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html"}}{\fldrslt \cf6 Primitive Data Types}}\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f3\i\b \cf5 Default Values
+\f2\i0\b0 \
+\pard\pardeftab720\partightenfactor0
+
+\f4\i \cf5 It's not always necessary to assign a value when a field is declared. Fields that are declared but not initialized will be set to a reasonable default by the compiler. Generally speaking, this default will be zero or 
+\f5\i0 \cf7 \cb8 null
+\f4\i \cf5 \cb1 , depending on the data type. Relying on such default values, however, is generally considered bad programming style.
+\f2\i0 \
+
+\f4\i Local variables are slightly different; the compiler never assigns a default value to an uninitialized local variable. If you cannot initialize your local variable where it is declared, make sure to assign it a value before you attempt to use it. Accessing an uninitialized local variable will result in a compile-time error.\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f6\i0\b \cf9 \ul \ulc9 In Swift for uninitialised variables,\
+
+\f2\b0 \cf10 \ulnone Non optional variables don\'92t have a default value in swift\
+You also cannot use uninitialised variables in swift.\
+Hence if you really want to leave your variables uninitialised, you can use optional, where in this case there will be a daft value for your variables if you don\'92t initialised the variables\
+	for examples: var myName : String? , the default value of myName will be nil if you try to print it in the console\
+                               Var myAge : Int? , the default value of the myAge will be nil if you try to print it in the console\cf5 \
+\
+In short, no matter how you try, the default value for the optionals will be nil either way.\
+And if you try to print out the value that is declared as optional, the data type will always be optional unless you wrap it around by using the exclamation marks\
+	For example: if you do myName = \'93hello\'94\
+			     print(myName)\
+			     output: optional(\'93Hello\'94)\
+\
+How to turn it from data type into the data type we mentioned when we first created the variable? (We called it unwrap)\
+This meaning you will accept the consequences where you don\'92t want the compiler to check and you are so sure that you are correct for your data already\
+\
+Then your optional will become a normal string when you try to print it. You overwritten the safety check\
+	For example:  var player1Username : String? = nil //create a variable that can hold a nil value\
+                                player1Username = \'93hello world\'94     //this will be an optional data type where it can still assign to a nil value\
+			      player1Username = nil. //here will be okay\
+ 			      //but if we do this and print out the value by adding a unwrapping mark\
+ 			      print(player1username!) //this means that we say that the var will always have a value, this will cause error)\
+\
+In order to print something like this, we should add a safety check, put a check condition by using if \
+	For example: if player1Username != nil\{.             //here you need to check whether your variables have data or not, if there is data then we will execute the next line which is unwrapping the variables\
+				print(player1Username!)\
+			     \}\
+\
 \
 }
